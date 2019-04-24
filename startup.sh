@@ -42,7 +42,7 @@ mkdir -p /mnt/admin-ap/home/mnt/admin-ap/home/root /sfloess /mnt/admin-ap/etc /m
 #sshfs -o allow_other,default_permissions,reconnect          root@admin-ap:/opt/shared      /mnt/admin-ap/shared
 
 sshfs -s -o allow_other,default_permissions,nonempty,reconnect sfloess@admin-ap:/home/sfloess /mnt/admin-ap/home/sfloess
-sshfs -s -o allow_other,default_permissions,nonempty,reconnect root@admin-ap:/home/root       /mnt/admin-ap/home/root
+sshfs -s -o allow_other,default_permissions,nonempty,reconnect root@admin-ap:/root            /mnt/admin-ap/root
 
 #sshfs -s -o allow_other,default_permissions,nonempty root@admin-ap:/etc             /mnt/admin-ap/etc
 #sshfs -s -o allow_other,default_permissions,nonempty root@admin-ap:/flossware       /mnt/admin-ap/flossware
