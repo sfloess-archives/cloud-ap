@@ -28,7 +28,7 @@ chmod 700 -R /etc/ssh /var/run/sshd
 /etc/init.d/ssh        start
 /etc/init.d/rsync      start
 /etc/init.d/mysql      start
-/etc/init.d/postgres   start
+/etc/init.d/postgresql start
 
 mkdir -p /mnt/admin-ap/home/mnt/admin-ap/home/root /sfloess /mnt/admin-ap/etc /mnt/admin-ap/opt/flossware /mnt/admin-ap/backups /mnt/admin-ap/media /mnt/admin-ap/nas /mnt/admin-ap/shared /mnt/admin-ap/root
 
