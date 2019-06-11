@@ -30,6 +30,9 @@ chmod 700 -R /etc/ssh /var/run/sshd
 /etc/init.d/mysql      start
 /etc/init.d/postgresql start
 
+# Start mega cmd server
+mega-whoami
+
 mkdir -p /mnt/admin-ap/home/mnt/admin-ap/home/root /sfloess /mnt/admin-ap/etc /mnt/admin-ap/opt/flossware /mnt/admin-ap/backups /mnt/admin-ap/media /mnt/admin-ap/nas /mnt/admin-ap/shared /mnt/admin-ap/root
 
 #sshfs -o allow_other,default_permissions,nonempty,reconnect sfloess@admin-ap:/home/sfloess /mnt/admin-ap/home/sfloess
