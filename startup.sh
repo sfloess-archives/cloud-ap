@@ -4,7 +4,7 @@
 #ln -s /lib/modules/* /lib/modules/`uname -r`
 
 depmod
-modprobe fuse
+#modprobe fuse
 
 chmod -R 700 /root/.ssh
 chmod 777 /run/screen
@@ -31,9 +31,21 @@ chmod 700 -R /etc/ssh /var/run/sshd
 /etc/init.d/postgresql start
 
 # Start mega cmd server
-mega-whoami
+/usr/local/bin/mega-whoami
 
 mkdir -p /mnt/admin-ap/home/mnt/admin-ap/home/root /sfloess /mnt/admin-ap/etc /mnt/admin-ap/opt/flossware /mnt/admin-ap/backups /mnt/admin-ap/media /mnt/admin-ap/nas /mnt/admin-ap/shared /mnt/admin-ap/root
+
+echo "Mount user dirs..."
+
+for aMount in /mnt/admin-ap/root/.samba/*.smb
+do
+	userName=`basename ${aMount} .smb`
+	mkdir -p /mnt/admin-ap/home/${userName}
+
+	echo "    Mounting ${userName} -> ${aMount}"
+
+	mount -t cifs //admin-ap/sfloess /mnt/admin-ap/home/${userName} -o "credentials=${aMount}"
+done
 
 #sshfs -o allow_other,default_permissions,nonempty,reconnect sfloess@admin-ap:/home/sfloess /mnt/admin-ap/home/sfloess
 #sshfs -o allow_other,default_permissions,nonempty,reconnect root@admin-ap:/etc             /mnt/admin-ap/etc
@@ -44,8 +56,8 @@ mkdir -p /mnt/admin-ap/home/mnt/admin-ap/home/root /sfloess /mnt/admin-ap/etc /m
 #sshfs -o allow_other,default_permissions,reconnect          root@admin-ap:/opt/nas         /mnt/admin-ap/nas
 #sshfs -o allow_other,default_permissions,reconnect          root@admin-ap:/opt/shared      /mnt/admin-ap/shared
 
-sshfs -s -o allow_other,default_permissions,nonempty,reconnect sfloess@admin-ap:/home/sfloess /mnt/admin-ap/home/sfloess
-sshfs -s -o allow_other,default_permissions,nonempty,reconnect root@admin-ap:/root            /mnt/admin-ap/root
+#sshfs -s -o allow_other,default_permissions,nonempty,reconnect sfloess@admin-ap:/home/sfloess /mnt/admin-ap/home/sfloess
+#sshfs -s -o allow_other,default_permissions,nonempty,reconnect root@admin-ap:/root            /mnt/admin-ap/root
 
 #sshfs -s -o allow_other,default_permissions,nonempty root@admin-ap:/etc             /mnt/admin-ap/etc
 #sshfs -s -o allow_other,default_permissions,nonempty root@admin-ap:/flossware       /mnt/admin-ap/flossware
